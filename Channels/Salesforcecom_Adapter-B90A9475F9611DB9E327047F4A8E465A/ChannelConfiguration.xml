@@ -10,8 +10,8 @@
    <from_http
       type="mapper"
       guid="Salesforcecom_Adapter-FromHTTP-TtK4KcYVwCIPiu"
-      commit_id="6196e8fda5af189c1f23153468387040462f0ce4"
-      commit_comment="Import Translators: baseline"
+      commit_id="b88498f105ca4ca77945b0f9e2d19320f470e540"
+      commit_comment="updated help and comments"
       mapper_url_path="salesforce/"/>
    <message_filter
       filter_after_logging="false"

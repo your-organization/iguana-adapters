@@ -1,5 +1,7 @@
--- http://help.interfaceware.com/v6/salesforce-com-adapter
 -- This is an example of using the Iguana salesforce adapter.
+
+-- http://help.interfaceware.com/v6/salesforce-com-adapter
+
 -- Please consult the above URL for information on getting
 -- the credentials required to authenticate this adapter.
 
@@ -20,12 +22,12 @@ local ShowUsers        = require 'ShowUsers'
 -- You'll need to:
 --  A) Edit these values saved here.
 --  B) Then uncomment the lines.
---  C) Then re comment the lines out
---  D) Then obfiscate your password from this Lua file *BEFORE* your next milestone commit.
---config.save{config='salesforce_consumer_key', password='', key=StoreKey}
---config.save{config='salesforce_consumer_secret', password='', key=StoreKey}
---config.save{config='salesforce_username', password='', key=StoreKey}
---config.save{config='salesforce_password', password='', key=StoreKey}
+--  C) Then comment the lines out again
+--  D) Then obfuscate your password from this Lua file *BEFORE* your next milestone commit.
+--config.save{config='salesforce_consumer_key', password='asdf', key=StoreKey}
+--config.save{config='salesforce_consumer_secret', password='asdf', key=StoreKey}
+--config.save{config='salesforce_username', password='asdf', key=StoreKey}
+--config.save{config='salesforce_password', password='adsf', key=StoreKey}
 
 -- See https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_list.htm
 -- for a list of potential salesforce.com objects to put here.  Each company tends to choose very specific
@@ -38,10 +40,10 @@ function main(Data)
    local Password       = config.load{config="salesforce_password"       , key=StoreKey}
    local ConsumerSecret = config.load{config="salesforce_consumer_secret", key=StoreKey}
    local UserName       = config.load{config="salesforce_username"       , key=StoreKey}
-   
+      
    local C = SalesforceConnect{username=UserName, objects=SalesObjects,
       password=Password, consumer_key=ConsumerKey,  consumer_secret=ConsumerSecret}
-  
+     
    MakeJiffyAccount(C)
    ShowUsers(C)
 end
