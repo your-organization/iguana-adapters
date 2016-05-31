@@ -24,13 +24,13 @@ local ShowUsers        = require 'ShowUsers'
 --  B) Then uncomment the lines.
 --  C) Then comment the lines out again
 --  D) Then obfuscate your password from this Lua file *BEFORE* your next milestone commit.
---config.save{config='salesforce_consumer_key', password='asdf', key=StoreKey}
---config.save{config='salesforce_consumer_secret', password='asdf', key=StoreKey}
---config.save{config='salesforce_username', password='asdf', key=StoreKey}
---config.save{config='salesforce_password', password='adsf', key=StoreKey}
+--config.save{config='salesforce_consumer_key', password='', key=StoreKey}
+--config.save{config='salesforce_consumer_secret', password='', key=StoreKey}
+--config.save{config='salesforce_username', password='', key=StoreKey}
+--config.save{config='salesforce_password', password='', key=StoreKey}
 
 -- See https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_list.htm
--- for a list of potential salesforce.com objects to put here.  Each company tends to choose very specific
+-- for a list of potential salesforce.com objects to put here. Each company tends to choose very specific
 -- parts of salesforce.com to implement so it makes sense to select just the objects that your implementation
 -- uses.
 local SalesObjects= "user,account,contact,opportunity,note,opportunityLineItem,pricebookEntry,queueSobject"

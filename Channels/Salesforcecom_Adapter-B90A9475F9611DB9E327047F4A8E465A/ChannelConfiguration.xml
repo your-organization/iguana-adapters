@@ -10,8 +10,8 @@
    <from_http
       type="mapper"
       guid="Salesforcecom_Adapter-FromHTTP-TtK4KcYVwCIPiu"
-      commit_id="b88498f105ca4ca77945b0f9e2d19320f470e540"
-      commit_comment="updated help and comments"
+      commit_id="7703bbe8f72c4042134597ca50dc4b54307b0046"
+      commit_comment="update comments"
       mapper_url_path="salesforce/"/>
    <message_filter
       filter_after_logging="false"
