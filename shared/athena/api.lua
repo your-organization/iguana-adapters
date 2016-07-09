@@ -2,8 +2,6 @@
 
 require 'net.http.cache'
 local AthenaSource = require 'athena.athena_source'
---local AthenaSource2 = require 'athena.athena_docs2'  -- JULIAN WAS HERE
---local store2 = require 'athena.store2'               -- JULIAN WAS HERE - this was an outdated version of store2
 local store2 = require 'store2'
 local store = store2.connect('athena.db')
 
@@ -105,8 +103,8 @@ local function handleErrors(Response, Err, Header, Extras)
    iguana.logInfo(Response)
    if Err ~= 200 then -- For all responses other thsn 200 OK
        if Err == 401 then --Failed Authorization
-         --Problem to look into later : config and Key are now not local
-         -- JULIAN WAS HERE - fixed by passing config and key values to the athena.connect in Credentials param
+         -- Problem to look into later : config and Key are now not local
+         -- fixed by passing config and key values to the athena.connect in Credentials param
          local tempToken = GetAccessTokenViaHTTP('access_token', {auth={username=Config.load{config='athena_key', key=Key}, 
                   password=Config.load{config='athena_secret', key=Key}}}).access_token
          trace(tempToken)
@@ -330,7 +328,6 @@ end
 -- connection
 ----------------------------------------------------------------------------------
 local function AthenaConnect(Credentials)
--- JULIAN WAS HERE
    -- set the Config and Key values (local to this file) that are required for
    -- for error handling function handleErrors() to work 
    if not Credentials.config then error('config parameter is required', 2) end

@@ -2,12 +2,11 @@ require 'jsonhelp'
 require 'database'
 
 map = require 'athena.mapPatient'
--- In this channel we process the patients we get off the wire.
--- We'll enter the data into a set of database tables.  The database
+-- In this channel we process the patients we get off the wire and
+-- enter the data into a set of database tables. The database
 -- tables are defined in a schema file called a 'vmd file'.
 --
 -- This can edited using a windows program called Chameleon that comes with Iguana.
-
 
 function GetDatabase()
    return db.connect{api=db.SQLITE, name='patient_info'}

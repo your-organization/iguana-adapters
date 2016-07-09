@@ -7,8 +7,8 @@
    use_message_filter="false">
    <to_mapper
       guid="Athena_ADT_Watcher-To-Yl6jRFnukaaBv0"
-      commit_id="f10c71ab9bf1c27b60426b02a3db127d2b2b5ddc"
-      commit_comment="removed require stringutil as none of the functions are being used...">
+      commit_id="a012d816c12c81200809cb6f112eff02c3171b04"
+      commit_comment="changed comments">
       <dequeue_list>
          <dequeue
             source_name="self"
@@ -17,8 +17,8 @@
    </to_mapper>
    <from_mapper
       guid="Athena_ADT_Watcher-From-sdumDmnDjZOMXz"
-      commit_id="2335fa1f25d99eb5cf8423f5975223cc78a22973"
-      commit_comment="Monica baseline"
+      commit_id="f14124ac4ce3b15008d8e528da835f5c9d19e354"
+      commit_comment="JULIAN WAS HERE all removed - this is the release version"
       poll_time="100000">
    </from_mapper>
 </channel>

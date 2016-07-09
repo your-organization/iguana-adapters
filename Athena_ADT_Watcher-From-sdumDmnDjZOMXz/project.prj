@@ -3,13 +3,12 @@
     "LuaDependencies": [
         "athena.api",
         "athena.athena_source",
-        "athena.store2",
         "encrypt.password",
         "net.http.cache",
         "store2"
     ],
     "OtherDependencies": [],
-    "timestamp": "1468067656",
+    "timestamp": "1468068078",
     "version_info": {
         "build": 0,
         "major": 6,
