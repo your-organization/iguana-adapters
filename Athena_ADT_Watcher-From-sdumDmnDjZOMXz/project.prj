@@ -1,0 +1,18 @@
+{
+    "LocalDependencies": [],
+    "LuaDependencies": [
+        "athena.api",
+        "athena.athena_source",
+        "athena.store2",
+        "encrypt.password",
+        "net.http.cache",
+        "store2"
+    ],
+    "OtherDependencies": [],
+    "timestamp": "1468067656",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}

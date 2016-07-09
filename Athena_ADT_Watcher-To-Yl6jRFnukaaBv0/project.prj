@@ -1,0 +1,18 @@
+{
+    "LocalDependencies": [
+        "database.lua"
+    ],
+    "LuaDependencies": [
+        "athena.mapPatient",
+        "jsonhelp"
+    ],
+    "OtherDependencies": [
+        "athena.vmd"
+    ],
+    "timestamp": "1468067656",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}

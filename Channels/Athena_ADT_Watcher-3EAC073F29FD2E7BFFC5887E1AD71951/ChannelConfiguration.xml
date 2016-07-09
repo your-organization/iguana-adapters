@@ -1,0 +1,24 @@
+<channel
+   name="Athena ADT Watcher"
+   guid="3EAC073F29FD2E7BFFC5887E1AD71951"
+   description="Watches Athena instance for new/updated patient records. &#xD;&#xA;&#xD;&#xA;When it sees one it pushes the patient ID into the queue for the channel which then triggers an event in the destination.&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;http://help.interfaceware.com/v6/athena-adt-watcher&#xD;&#xA;&#xD;&#xA;"
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_mapper
+      guid="Athena_ADT_Watcher-To-Yl6jRFnukaaBv0"
+      commit_id="f10c71ab9bf1c27b60426b02a3db127d2b2b5ddc"
+      commit_comment="removed require stringutil as none of the functions are being used...">
+      <dequeue_list>
+         <dequeue
+            source_name="self"
+            dequeue_guid="71FA6DB27140E1D49D350F134519B62F"/>
+      </dequeue_list>
+   </to_mapper>
+   <from_mapper
+      guid="Athena_ADT_Watcher-From-sdumDmnDjZOMXz"
+      commit_id="2335fa1f25d99eb5cf8423f5975223cc78a22973"
+      commit_comment="Monica baseline"
+      poll_time="100000">
+   </from_mapper>
+</channel>
