@@ -1,13 +1,16 @@
+-- http://help.interfaceware.com/v6/athena-adt-watcher
+
 require 'net.http.cache'
 local AthenaSource = require 'athena.athena_source'
-local AthenaSource2 = require 'athena.athena_docs2'
-local store2 = require 'athena.store2'
+--local AthenaSource2 = require 'athena.athena_docs2'  -- JULIAN WAS HERE
+--local store2 = require 'athena.store2'               -- JULIAN WAS HERE - this was an outdated version of store2
+local store2 = require 'store2'
 local store = store2.connect('athena.db')
 
 local Key
 local Config
 
-local athena = {}
+--local athena = {}
 local token = {}
 local api = {}
 local Url = { root = 'https://api.athenahealth.com/', repository = 'preview1/', tokenPath = 'oauthpreview/token' }
@@ -103,7 +106,7 @@ local function handleErrors(Response, Err, Header, Extras)
    if Err ~= 200 then -- For all responses other thsn 200 OK
        if Err == 401 then --Failed Authorization
          --Problem to look into later : config and Key are now not local
-         trace(token)
+         -- JULIAN WAS HERE - fixed by passing config and key values to the athena.connect in Credentials param
          local tempToken = GetAccessTokenViaHTTP('access_token', {auth={username=Config.load{config='athena_key', key=Key}, 
                   password=Config.load{config='athena_secret', key=Key}}}).access_token
          trace(tempToken)
@@ -210,7 +213,7 @@ end
 
 local function init()
    local ApiData = json.parse{data=AthenaSource}
-   local ApiData = json.parse{data=AthenaSource2}
+--   local ApiData = json.parse{data=AthenaSource2}
    trace(ApiData)
    local a  = {}
    for K,V in pairs(ApiData.resources) do
@@ -323,10 +326,15 @@ end
 -- Used to connected to Athena Help based on client key and client secret
 -- Tries to find a cached token, if not will make an ajax call to get a new one
 -- and store it, as well as store the time it was accessed
--- @params T:  Contains client key and secret and information necessary for
+-- @params T: Contains client key and secret and information necessary for
 -- connection
 ----------------------------------------------------------------------------------
-function athena.connect(Credentials)
+local function AthenaConnect(Credentials)
+-- JULIAN WAS HERE
+   -- set the Config and Key values (local to this file) that are required for
+   -- for error handling function handleErrors() to work 
+   if not Credentials.config then error('config parameter is required', 2) end
+   if not Credentials.key then error('key parameter is required', 2) end
    Config = Credentials.config
    Key = Credentials.key
    local T = {auth = {username = Credentials.username, password = Credentials.password},
@@ -340,15 +348,31 @@ function athena.connect(Credentials)
    end
    return init()
 end
---- setting help for athena.connect
-local HelpInfo = {Title = 'athena.connect', Desc = 'Connect to Athena server', ParameterTable = true, Parameters = {}}
-HelpInfo.Parameters[1] = {['username'] = {['Desc'] = 'client key for the app', ['Opt'] = false }}
-HelpInfo.Parameters[2] = {['password'] = {['Desc'] = 'client secret for the app', ['Opt'] = false }}
-HelpInfo.Parameters[3] = {['cache'] = {['Desc'] = 'keep a cache of app token', ['Opt'] = false }}
-HelpInfo.Parameters[4] = {['config'] = {['Desc'] = 'configuration object', ['Opt'] = false }}
-HelpInfo.Parameters[5] = {['key'] = {['Desc'] = 'key to configuration file', ['Opt'] = false }}
 
-trace(HelpInfo)
-help.set{input_function=athena.connect, help_data=HelpInfo}
+local HelpInfo = [[{"SeeAlso":[{"Title":"Athena ADT Watcher","Link":"http://help.interfaceware.com/v6/athena-adt-watcher"},
+                                  {"Title":"The Athena website","Link":"http://www.athenahealth.com"}],
+                "Returns":[{"Desc":"An Athena connection object returned as a table <u>table</u>."}],
+                "Title":"AthenaConnect",
+         "Parameters":[{"username":{"Desc":"Client Key for this connected app <u>string</u>."}},
+                       {"password":{"Desc":"Client Secret for this connected app  <u>string</u>."}},
+                       {"cache":{"Opt" : true,"Desc":"If this is set to false then then the SQLite cache used to improve performance will be cleared  <u>boolean</u>."}},
+                       {"key":{"Desc":"Encryption key to configuration file  <u>string</u>."}},
+                       {"config": {"Desc" : "Config object  <u>table</u>."} }],
+         "ParameterTable": true,
+         "Examples":["-- Connect using hard coded username and password parameters - not recommended
+   -- Create a connection - returns a connection table
+   local A = AthenaConnect{username='45gqqz2cfw3fez2fkqxdqwc9', password='2bgWgWb8xDVuYXh', 
+   key=Key, config=config, cache=true}",
+"-- Connect using stored ecrypted parameters - recommended
+   local Username = config.load{config='athena_key', key=Key}
+   local Password = config.load{config='athena_secret', key=Key}
+      
+   -- Create a connection - returns a connection table
+   local A = AthenaConnect{username=Username, password=Password, key=Key, config=config, cache=true}"],
+         "Usage":"AthenaConnect{username=&lt;value&gt;, password=&lt;value&gt;, cache=&lt;value&gt; , config=&lt;value&gt;}",
+         "Desc":"Returns a connection object to a specified Athena instance"}]]
 
-return athena
+help.set{input_function=AthenaConnect, help_data=json.parse{data=HelpInfo}}
+
+
+return AthenaConnect
