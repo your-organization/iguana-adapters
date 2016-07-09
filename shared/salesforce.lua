@@ -13,7 +13,7 @@ require 'net.http.cache'
 
 local Store = store2.connect(iguana.project.guid().."salesforce")
 
--- These are default objects you can access.  If you want more objects you can specify them in the objects
+-- These are default objects you can access. If you want more objects you can specify them in the objects
 -- argument to salesforce.connect.
 -- Example objects QueueSobject, Account, Community, Contact, ContentDocument, Document, Product2, Event, Group, Note, Profile, Task, TaskPriority, TaskStatus, User
 -- See https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_list.htm
@@ -418,7 +418,7 @@ local helpinfo = {}
 
 local HelpConnect = [[{"SeeAlso":[{"Title":"Salesforce.com Adapter","Link":"http://help.interfaceware.com/v6/salesforce-com-adapter"},
                                   {"Title":"The Salesforce website","Link":"http://www.salesforce.com"}],
-                "Returns":[{"Desc":"The salesforce.com website <u>string</u>."}],
+                "Returns":[{"Desc":"An salesforce.com connection object returned as a table <u>table</u>."}],
                 "Title":"SalesforceConnect",
          "Parameters":[{"username":{"Desc":"User ID to login with <u>string</u>."}},
                        {"password":{"Desc":"Password of that user ID  <u>string</u>."}},
@@ -433,7 +433,7 @@ local C = SalesforceConnect{clear_cache=false,
    password='mypassword', 
    consumer_secret='585519048400883388', 
    consumer_key='3MVG9KI2HHAq33RyfdfRmZyEybpy7b_bZtwCyJW7e._mxrVtsrbM.g5n3.fIwK3vPGRl2Ly2u7joju3yYpPeO' }",
-"-- Connect using stored ecrypted parameters - recommended
+"-- Connect using stored encrypted parameters - recommended
    local ConsumerKey    = config.load{config='salesforce_consumer_key'   , key=StoreKey}
    local Password       = config.load{config='salesforce_password'       , key=StoreKey}
    local ConsumerSecret = config.load{config='salesforce_consumer_secret', key=StoreKey}
@@ -443,7 +443,7 @@ local C = SalesforceConnect{clear_cache=false,
       password=Password, consumer_key=ConsumerKey,  consumer_secret=ConsumerSecret}"],
          "Usage":"SalesforceConnect{username=&lt;value&gt;, password=&lt;value&gt;, consumer_key=&lt;value&gt;,
                   consumer_secret=&lt;value&gt; [, clear_cache=&lt;value&gt;] [, objects=&lt;value&gt;]}",
-         "Desc":"Returns a connection object to a specified salesforce instance"}]]
+         "Desc":"Returns a connection object to a specified salesforce.com instance"}]]
 
 help.set{input_function=SalesforceConnect, help_data=json.parse{data=HelpConnect}}
 
