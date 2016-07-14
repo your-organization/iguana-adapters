@@ -1,7 +1,7 @@
 -- net.http.cache adds local caching to the net.http API built into Iguana
 -- It makes use of a local SQLite database in the store2 module to do so.
--- See http://help.interfaceware.com/v6/http-caching 
--- To understand the value of the HTTP caching that this gives support for.
+
+-- http://help.interfaceware.com/v6/http-caching 
 
 local store = require 'store2'
 
@@ -71,3 +71,24 @@ function net.http.cache()
    return Cache
 end
 
+-- Help documentation for net.http.cache
+local netHttpCacheHelp = {
+   Title = "net.http.cache",
+   Usage = "net.http.cache()",
+   Desc  = [[Returns cached HTTP connection data <br>
+<b>Note</b>: Cached data is stored using the store2.lua module]],
+   ParameterTable = false,
+
+   Parameters = {},
+
+   Returns   = {
+      { Desc = 'Cached HTTP connection data <u>table</u>' }
+   },
+      
+   SeeAlso={{Title="iFormBuilder - OAuth 2.0 Authentication with JWT", 
+             Link="http://help.interfaceware.com/v6/oauth2-with-iformbuilder"},
+            {Title="Source code for the net.http.cache.lua module on github", 
+             Link="https://github.com/interfaceware/iguana-webservices/blob/master/shared/net/http/cache.lua"}},
+}
+
+help.set{input_function=net.http.cache, help_data=netHttpCacheHelp}

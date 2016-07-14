@@ -17,8 +17,8 @@
    </to_mapper>
    <from_mapper
       guid="Athena_ADT_Watcher-From-sdumDmnDjZOMXz"
-      commit_id="f14124ac4ce3b15008d8e528da835f5c9d19e354"
-      commit_comment="JULIAN WAS HERE all removed - this is the release version"
+      commit_id="48e77434fc830e77827ec06410e1c271870d3355"
+      commit_comment="update cache"
       poll_time="100000">
    </from_mapper>
 </channel>
