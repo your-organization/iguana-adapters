@@ -17,8 +17,8 @@
    </to_mapper>
    <from_mapper
       guid="Athena_ADT_Watcher-From-sdumDmnDjZOMXz"
-      commit_id="48e77434fc830e77827ec06410e1c271870d3355"
-      commit_comment="update cache"
+      commit_id="a9b1eff8fd8c3456cd7676d59666e9d6e8cafb21"
+      commit_comment="help updated"
       poll_time="100000">
    </from_mapper>
 </channel>

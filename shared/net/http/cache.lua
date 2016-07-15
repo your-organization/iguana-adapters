@@ -85,7 +85,7 @@ local netHttpCacheHelp = {
       { Desc = 'Cached HTTP connection data <u>table</u>' }
    },
       
-   SeeAlso={{Title="iFormBuilder - OAuth 2.0 Authentication with JWT", 
+   SeeAlso={{Title=" OAuth 2.0 via JWT iFormBuilder", 
              Link="http://help.interfaceware.com/v6/oauth2-with-iformbuilder"},
             {Title="Source code for the net.http.cache.lua module on github", 
              Link="https://github.com/interfaceware/iguana-webservices/blob/master/shared/net/http/cache.lua"}},
